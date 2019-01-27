@@ -8,7 +8,8 @@
             <%= image_tag task.photo, class:'card-img-top' %>
             <div class="card-body">
               <h5 class="card-title text-center"><%= task.name %></h5>
-              </div>
+            </div>
+            <%= link_to "Completar", task_todos_path(task), method: :post, class: "btn btn-primary" %>
           </div>
         </div>
       <% end %>

@@ -1,5 +1,12 @@
 Rails.application.routes.draw do
-  resources :tasks, only: :index
+  get 'todos/index'
+  get 'todos/create'
+  get 'todos/delete'
+  get 'todos/edit'
+  resources :tasks, only: :index do
+    resources :todos, only: :create
+  end
+
   devise_for :users
 
   root to: 'tasks#index'
