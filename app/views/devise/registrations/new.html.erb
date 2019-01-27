@@ -11,20 +11,20 @@
       </div>
     
       <div class="field">
-        <%= f.label :password %>
+        <%= f.label :password, "Contraseña" %>
         <% if @minimum_password_length %>
-        <em>(<%= @minimum_password_length %> characters minimum)</em>
+        <em>(<%= @minimum_password_length %> caracteres mínimo)</em>
         <% end %><br />
         <%= f.password_field :password, autocomplete: "new-password" %>
       </div>
     
       <div class="field">
-        <%= f.label :password_confirmation %><br />
+        <%= f.label :password_confirmation, "Confirmación de Contraseña" %><br />
         <%= f.password_field :password_confirmation, autocomplete: "new-password" %>
       </div>
     
       <div class="actions mt-2">
-        <%= f.submit "Sign up", class: 'btn btn-primary' %>
+        <%= f.submit "Registrarse", class: 'btn btn-primary' %>
         <%= render "devise/shared/links" %>
       </div>
     <% end %>
