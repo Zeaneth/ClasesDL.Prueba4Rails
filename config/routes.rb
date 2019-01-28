@@ -1,9 +1,6 @@
 Rails.application.routes.draw do
 
-  get 'todos/delete'
-  get 'todos/edit'
-
-  resources :tasks, only: :index do
+  resources :tasks do
     resources :todos, only: :create
   end
 

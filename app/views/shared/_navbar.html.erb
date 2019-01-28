@@ -10,10 +10,15 @@
         <a class="nav-link" href="<%= root_path %>">Home<span class="sr-only">(current)</span></a>
       </li>
       <li class="nav-item">
-        <a class="nav-link" href="#">Link</a>
+        <a class="nav-link" href="<%= new_task_path %>">Nueva Tarea</a>
       </li>
     </ul>
     <ul class="navbar-nav ml-auto">
+      <li class="nav-item">
+        <span class="btn btn-info">
+          Total realizadas: <span class="badge badge-light"><%= user_signed_in? ? current_user.total_done : 'N/A' %></span>
+        </span>
+      </li>
       <li class="nav-item dropdown">
         <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
           <%= user_signed_in? ? current_user.email : 'Cuenta' %>

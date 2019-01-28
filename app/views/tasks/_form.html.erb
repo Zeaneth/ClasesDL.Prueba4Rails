@@ -1,0 +1,28 @@
+<%= form_with(model: task, local: true) do |form| %>
+  <% if task.errors.any? %>
+    <div id="error_explanation">
+      <h2><%= pluralize(task.errors.count, "error") %> prohibited this task from being saved:</h2>
+
+      <ul>
+      <% task.errors.full_messages.each do |message| %>
+        <li><%= message %></li>
+      <% end %>
+      </ul>
+    </div>
+  <% end %>
+
+  <div class="field">
+    <%= form.label :name, "Nombre de la Tarea" %>
+    <%= form.text_field :name, class:"form-control", placeholder:"Ingrese aquí el nombre de la nueva tarea"%>
+  </div>
+
+  <div class="field">
+    <%= form.label :photo, "Link de la imagen" %>
+    <%= form.text_field :photo, class:"form-control mb-3", placeholder:"Ingrese aquí la url de su imagen" %>
+  </div>
+
+  <div class="actions">
+    <%= form.submit "Guardar Tarea", class:"btn btn-primary mr-2"%>
+    <%= link_to 'Volver', tasks_path %>
+  </div>
+<% end %>
