@@ -10,4 +10,9 @@ class User < ApplicationRecord
     todos.where(done: true).count
   end
 
+  def last_done(task_id)
+    todo = Todo.find_by(user: id, task: task_id)
+    todo ? "Última vez realizada: #{todo.done_at}" : "Nunca realizada :c"
+  end
+
 end
