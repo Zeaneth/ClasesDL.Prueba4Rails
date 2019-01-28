@@ -9,4 +9,7 @@ class Task < ApplicationRecord
     todo.done? if todo
   end
 
+  def ranking_members
+    todos.where('done_at IS NOT NULL').sort_by(&:done_at).first(5) if todos.any?
+  end
 end

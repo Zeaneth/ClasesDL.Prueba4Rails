@@ -10,6 +10,25 @@
       <%= image_tag @task.photo, class: "card-img-top" %>
       <%= link_to 'Atrás', tasks_path, class: "text-center btn-dark rounded-bottom p-2" %>
     </div>
-
+  </div>
+  <div class="col-md-6 mr-3">
+      <table class="table">
+        <thead>
+          <tr>
+            <th scope="col">#</th>
+            <th scope="col">Email</th>
+            <th scope="col">Realizada en:</th>
+          </tr>
+        </thead>
+        <tbody>
+        <% @task.ranking_members.each_with_index do |todo, n| %>
+          <tr>
+            <th scope="row"><%= (n + 1) %></th>
+            <td><%= todo.user.email %></td>
+            <td><%= time_tag todo.done_at %></td>
+          </tr>
+        <% end %>
+        </tbody>
+      </table>
   </div>
 </div>
