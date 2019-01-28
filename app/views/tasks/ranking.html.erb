@@ -1,0 +1,15 @@
+<p id="notice"><%= notice %></p>
+<div class="row mr-0">
+  <div class="col-md-4 ml-3">
+      <h2 class="text-center">
+        <span>Tarea:</span>
+        <strong><%= @task.name %></strong>
+      </h2>
+
+    <div class="card mb-3">
+      <%= image_tag @task.photo, class: "card-img-top" %>
+      <%= link_to 'Atrás', tasks_path, class: "text-center btn-dark rounded-bottom p-2" %>
+    </div>
+
+  </div>
+</div>

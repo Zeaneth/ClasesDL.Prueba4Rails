@@ -20,7 +20,7 @@
                   <%= link_to "Completar", task_todos_path(task), method: :post, class: "btn btn-success" %>
                 <% end %>
               <% end %>
-              <%= link_to "Ranking", task_todos_path(task), method: :post, class: "btn btn-warning" %>
+              <%= link_to "Ranking", tasks_ranking_path(task), method: :get, class: "btn btn-warning" %>
             </div>
           </div>
         </div>
