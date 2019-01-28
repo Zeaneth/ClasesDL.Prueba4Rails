@@ -1,0 +1,34 @@
+<h1 class="font-weight-bold text-center mt-3">Perfil: Tareas Realizadas :)</h1>
+<br>
+<div class="container">
+  <div class="row">
+    <% @todos.each_slice(3) do |row| %>
+      <% row.each do |todo| %>
+        <% if todo.task.completed?(current_user.id)%>
+          <div class="col">
+            <div class="card">
+              <%= image_tag todo.task.photo, class:'card-img-top' %>
+              <div class="card-body">
+                <h5 class="card-title text-center"><%= todo.task.name %></h5>
+                <% if user_signed_in? %>
+                  <h6 class="card-text text-center"><%= current_user.last_done(todo.task.id) %></h5>
+                <% end %>
+              </div>
+              <div class="btn-group mx-auto mb-2">
+                <% if user_signed_in? %>  
+                  <% if todo.task.completed?(current_user.id) %>
+                    <%= link_to "Deshacer", task_todos_path(todo.task), method: :post, class: "btn btn-danger" %>
+                    <% else %>
+                    <%= link_to "Completar", task_todos_path(todo.task), method: :post, class: "btn btn-success" %>
+                  <% end %>
+                <% end %>
+                <%= link_to "Ranking", tasks_ranking_path(todo.task), method: :get, class: "btn btn-warning" %>
+              </div>
+            </div>
+          </div>
+        <% end %>
+      <% end %>
+      <div class="w-100" style="margin-top: 3rem"> </div>
+    <% end %>
+  </div>
+</div>

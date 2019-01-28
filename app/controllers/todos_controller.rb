@@ -2,13 +2,6 @@ class TodosController < ApplicationController
   before_action :authenticate_user!
   before_action :set_todo, only: [:show, :edit, :update, :destroy]
 
-  def index
-    @todos = current_user.todos
-  end
-
-  def show
-  end
-
   def create
     @task = Task.find(params[:task_id])
     @todo = Todo.find_by(task: @task.id, user: current_user)
@@ -30,12 +23,9 @@ class TodosController < ApplicationController
       redirect_to tasks_path, notice: 'Se ha modificado el estado de tu todo :)'
     end
   end
-
-  def delete
-
-  end
-
-  def edit
+  
+  def profile
+    @todos = current_user.todos
   end
 
   private

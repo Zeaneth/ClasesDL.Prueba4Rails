@@ -2,6 +2,8 @@
 
 Prueba Rails número 2, "Lista de Tareas para las fiestas del 18"
 
+# Link a Heroku [aquí](https://todo-fiestas-patrias-edition.herokuapp.com/)
+
 # Contexto:
 
 El objetivo de esta actividad es evaluar la implementación de una relacion N-a-N en Rails a partir de las historias de usuario. Además reforzar conocimientos de patrón de diseño MVC, arquitectura REST y autenticación.
