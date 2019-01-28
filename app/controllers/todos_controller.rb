@@ -40,10 +40,6 @@ class TodosController < ApplicationController
 
   private
 
-  def check_status(task)
-
-  end
-
   def todo_params
     params.require(:todo).permit(:task_id, :done, :done_at)
   end
