@@ -8,7 +8,9 @@
             <%= image_tag task.photo, class:'card-img-top' %>
             <div class="card-body">
               <h5 class="card-title text-center"><%= task.name %></h5>
-              <h6 class="card-text text-center"><%= current_user.last_done(task.id) %></h5>
+              <% if user_signed_in? %>
+                <h6 class="card-text text-center"><%= current_user.last_done(task.id) %></h5>
+              <% end %>
             </div>
             <div class="btn-group mx-auto mb-2">
               <% if user_signed_in? %>  
