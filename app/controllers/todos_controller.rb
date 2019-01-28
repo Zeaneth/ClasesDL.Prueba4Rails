@@ -11,22 +11,34 @@ class TodosController < ApplicationController
 
   def create
     @task = Task.find(params[:task_id])
-    @todo = Todo.new(task: @task, user: current_user, done: false)
-    if @todo.save!
-      redirect_to tasks_path, notice: 'Se ha creado un nuevo todo :)'
+    @todo = Todo.find_by(task: @task.id, user: current_user)
+    puts "Todo already exists: #{@todo}"
+    unless @todo
+      @todo = Todo.new(task: @task, user: current_user, done: true)
+      puts "Todo to save: #{@todo}"
+      if @todo.save!
+        redirect_to tasks_path, notice: 'Se ha creado un nuevo todo :)'
+      else
+        redirect_to tasks_path, alert: 'No se ha podido crear el todo :('
+      end
     else
-      redirect_to tasks_path, alert: 'No se ha podido crear el todo :('
+      @todo.done? ? @todo.done = false : @todo.done = true
+      @todo.save!
     end
   end
 
   def delete
-    
+
   end
 
   def edit
   end
 
   private
+
+  def check_status(task)
+
+  end
 
   def todo_params
     params.require(:todo).permit(:task_id, :done, :done_at)
