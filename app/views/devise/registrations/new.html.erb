@@ -7,7 +7,12 @@
   
       <div class="field">
         <%= f.label :email %><br />
-        <%= f.email_field :email, autofocus: true, autocomplete: "email" %>
+        <%= f.email_field :email, autofocus: true, autocomplete: "email", placeholder: "Ingrese su dirección de email aquí", class:"form-control" %>
+      </div>
+
+      <div class="field">
+        <%= f.label :avatar_photo %><br />
+        <%= f.text_field :avatar_photo, placeholder: "Ingrese la Url de una foto propia aquí", class:"form-control" %>
       </div>
     
       <div class="field">
@@ -15,12 +20,12 @@
         <% if @minimum_password_length %>
         <em>(<%= @minimum_password_length %> caracteres mínimo)</em>
         <% end %><br />
-        <%= f.password_field :password, autocomplete: "new-password" %>
+        <%= f.password_field :password, autocomplete: "new-password", placeholder: "Ingrese su contraseña aquí", class:"form-control" %>
       </div>
     
       <div class="field">
         <%= f.label :password_confirmation, "Confirmación de Contraseña" %><br />
-        <%= f.password_field :password_confirmation, autocomplete: "new-password" %>
+        <%= f.password_field :password_confirmation, autocomplete: "new-password", placeholder: "Vuelva a ingresar su contraseña aquí", class:"form-control" %>
       </div>
     
       <div class="actions mt-2">
