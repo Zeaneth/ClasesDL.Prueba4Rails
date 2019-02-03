@@ -11,20 +11,22 @@
       <%= link_to 'Atrás', tasks_path, class: "text-center btn-dark rounded-bottom p-2" %>
     </div>
   </div>
-  <div class="col-md-6 mr-3">
+  <div class="col-md-7 m-3">
     <h2 class="text-center font-weight-bold">Ranking de Usuarios</h2>
-      <table class="table">
+      <table class="table mt-4">
         <thead>
           <tr>
             <th scope="col">#</th>
+            <th scope="col" style="width: 12rem;">Foto</th>
             <th scope="col">Email</th>
-            <th scope="col">Realizada a la fecha de:</th>
+            <th scope="col" style="width: 15rem;">Realizada a la fecha de:</th>
           </tr>
         </thead>
         <tbody>
         <% @task.ranking_members.each_with_index do |todo, n| %>
           <tr>
             <th scope="row"><%= (n + 1) %></th>
+            <td><%= image_tag todo.user.avatar_photo, class:"card-img w-50" %> </td>
             <td><%= todo.user.email %></td>
             <td><%= time_tag todo.done_at %></td>
           </tr>
