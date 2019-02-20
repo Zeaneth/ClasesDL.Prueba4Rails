@@ -1,26 +1,24 @@
-<h1 class="font-weight-bold text-center mt-3">Perfil: Tareas Realizadas :)</h1>
-<br>
-<div class="container">
-  <div class="row">
-    <% @todos.each_slice(3) do |row| %>
-      <% row.each do |todo| %>
-        <% if todo.task.completed?(current_user.id)%>
-          <div class="col">
-            <div class="card">
-              <%= image_tag todo.task.photo, class:'card-img-top' %>
-              <div class="card-body">
-                <h5 class="card-title text-center"><%= todo.task.name %></h5>
-                <h6 class="card-text text-center"><%= current_user.last_done(todo.task.id) %></h5>
-              </div>
-              <div class="btn-group mx-auto mb-2">
-                <%= link_to "Deshacer", task_todos_path(todo.task), method: :post, class: "btn btn-danger" %>
-                <%= link_to "Ranking", tasks_ranking_path(todo.task), method: :get, class: "btn btn-warning" %>
-              </div>
+<div class="jumbotron jumbotron-fluid">
+  <h1 class="text-center font-weight-bold" style="font-size: 2.5em">TAREAS DIECIOCHERAS REALIZADAS</h1>
+  <h2 class="text-center font-italic">Por: <%= current_user.email%></h2>
+</div>
+<div class="container-fluid">
+  <% @todos.each do |todo| %>
+    <% if todo.task.completed?(current_user.id)%>
+      <div class="col-md-4 col-lg-3 col-sm-12 float-left">
+        <div class="card mx-auto mb-2">
+          <%= image_tag todo.task.photo, class:'card-img-top' %>
+          <div class="card-body">
+            <h5 class="card-title text-center"><%= todo.task.name %></h5>
+            <h6 class="card-text text-center"><%= current_user.last_done(todo.task.id) %></h5>
+            <div class="btn-group d-flex justify-content-center">
+              <%= link_to "Deshacer", task_todos_path(todo.task), method: :post, class: "btn btn-danger" %>
+              <%= link_to "Ranking", tasks_ranking_path(todo.task), method: :get, class: "btn btn-warning" %>
             </div>
           </div>
-        <% end %>
-      <% end %>
-      <div class="w-100" style="margin-top: 3rem"> </div>
+        </div>
+      </div>
     <% end %>
-  </div>
+  <div class="w-100" style="margin-top: 3rem"> </div>
+  <% end %>
 </div>
